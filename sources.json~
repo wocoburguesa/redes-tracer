@@ -1,0 +1,26 @@
+{
+    "LO": {
+        "url": "traceroute _IP_ADDRESS_"
+    },
+    "BY": {
+        "url": "http://by104.activeby.net/lg/",
+        "post_data": {"method": "trace", "host": "_IP_ADDRESS_"}
+    },
+    "CH": {
+        "url": "http://www.switch.ch/cgi-bin/network/nph-traceroute-opencms?destination=_IP_ADDRESS_"
+    },
+    "JP": {
+        "url": "http://www.harenet.ad.jp/cgi-bin/harenet/traceroute/traceroute.cgi",
+        "post_data": {"host": "_IP_ADDRESS_"}
+    },
+    "RU": {
+        "url": "http://traceroute.rusnet.ru/?_IP_ADDRESS_"
+    },
+    "UK": {
+        "url": "http://ab.newnet.co.uk/cgi-bin/traceroute?_IP_ADDRESS_"
+    },
+    "US": {
+        "url": "http://www.net.princeton.edu/cgi-bin/traceroute.pl",
+        "post_data": {"target": "_IP_ADDRESS_"}
+    }
+}

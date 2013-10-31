@@ -1,0 +1,17 @@
+import json
+
+from traceroute import Traceroute
+
+def test():
+    sources_file = open('sources.json').read()
+
+    sources = json.loads(sources_file.replace("_IP_ADDRESS_", '8.8.8.8'))
+    t = Traceroute(ip_address='8.8.8.8',
+                   source=sources['US'])
+    hops = t.traceroute()
+
+    print hops
+
+if __name__ == '__main__':
+    test()
+    print 'OK'
