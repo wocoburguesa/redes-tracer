@@ -207,6 +207,7 @@ class Traceroute(object):
             signal.signal(signal.SIGALRM, self.signal_handler)
             signal.alarm(self.timeout)
             stdout, stderr = process.communicate()
+            print stdout
             returncode = process.returncode
             self.print_debug("cmd={}, returncode={}".format(cmd, returncode))
             if returncode != 0:
@@ -261,10 +262,11 @@ class Traceroute(object):
             self.print_debug(str(err))
         return content
 
-    def signal_handler(self, signum):
+    def signal_handler(self, signum, other):
         """
         Raises exception when signal is caught.
         """
+#        print other
         raise Exception("Caught signal {}".format(signum))
 
     def print_debug(self, msg):

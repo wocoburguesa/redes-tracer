@@ -6,7 +6,7 @@ from traceroute import Traceroute
 
 latinamerica = ['Peru', 'Chile', 'Argentina', 'Brazil', 'Colombia', 'Ecuador', 'Bolivia']
 
-def get_ips(filename):
+def write_ips(filename):
     ips = dict.fromkeys(latinamerica, [])
 
     with open(filename, 'r') as csvfile:
@@ -20,7 +20,9 @@ def get_ips(filename):
     with open('ips.json', 'w') as ipsjson:
         ipsjson.write(json.dumps(ips, indent=4))
 
-    return ips
+def get_ips(filename):
+    with open(filename, 'r') as ipsfile:
+        return json.loads(ipsfile.read())
 
 def track(ips):
     sources_file = open('sources.json').read()
@@ -28,24 +30,39 @@ def track(ips):
     sources = json.loads(sources_file)
     source_template = sources['LO']['url']
 
-    for country in ips.keys():
-        for ip in ips[country]:
+    country_hops = dict.fromkeys(latinamerica, {})
 
+    for i in range(4):
+        for country in ips.keys():
+            ip = ips[country][0]
             sources['LO']['url'] = source_template.replace('_IP_ADDRESS_', ip)
-            pprint.pprint(sources, indent=4)
+#            pprint.pprint(sources, indent=4)
             t = Traceroute(ip_address=ip,
                            source=sources['LO'],
-                           country='LO')
+                           country='LO',
+                           timeout=900)
 #            t.ip_address = ip
             print 'Starting'
             hops = t.traceroute()
             print 'Finished'
 
+            #write it to some structure
+            country_hops[country][ip] = hops
+
+            #delete it from ip list
+            ips[country].remove(ip)
+
             pprint.pprint(hops)
 
-            raw_input()
+    #replace original file with deleted rows
+    with open('ips.json', 'w') as ipsjson:
+        ipsjson.write(json.dumps(ips, indent=4))
+
+    #write file with obtained hop results
+    with open('reuslts.json', 'w') as ipsjson:
+        ipsjson.write(json.dumps(country_hops, indent=4))
 
 if __name__ == '__main__':
-    ips = get_ips('GeoIPCountryWhoIs.csv')
+    ips = get_ips('ips.json')
     track(ips)
     print 'OK'
