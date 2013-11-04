@@ -1,0 +1,78 @@
+.main-container {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+
+    margin-bottom: 2em;
+}
+
+.map-container {
+    height: 600px;
+
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.map-no-data {
+    height: 600px;
+
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    background-color: #e7e7e7;
+}
+
+.selector-section {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.hops-info-container {
+    height: 36em;
+
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+
+    overflow-y: auto;
+    overflow-x: auto;
+
+    padding-top: 0.5em;
+    white-space: nowrap;
+}
+
+.hops-no-data {
+    height: 36em;
+
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+
+    background-color: #e7e7e7;
+}
+
+.hops-info-item > span{
+    padding-left: 1em;
+}
+
+/* SPECIAL STYLES FOR DROPDOWNS */
+.btn-group,
+.btn-group-vertical{
+    width: 100%;
+}
+
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    width: 90%;
+}
+
+.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .dropdown-toggle:not(:first-child) {
+    width: 10%;
+}
+
+.open > .dropdown-menu {
+    width: 100%;
+}

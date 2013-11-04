@@ -7,7 +7,8 @@ from traceroute import Traceroute
 latinamerica = ['Peru', 'Chile', 'Argentina', 'Brazil', 'Colombia', 'Ecuador', 'Bolivia']
 
 def write_ips(filename):
-    ips = dict.fromkeys(latinamerica, [])
+    ips = {country: [] for country in latinamerica}
+#    ips = dict.fromkeys(latinamerica, [])
 
     with open(filename, 'r') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
@@ -32,6 +33,7 @@ def track(ips):
 
     country_hops = dict.fromkeys(latinamerica, {})
 
+    #ACA CAMBIAS EL 4 SI ES QUE CORRE MAS RAPIDO EN TU PC
     for i in range(4):
         for country in ips.keys():
             ip = ips[country][0]
@@ -59,10 +61,11 @@ def track(ips):
         ipsjson.write(json.dumps(ips, indent=4))
 
     #write file with obtained hop results
-    with open('reuslts.json', 'w') as ipsjson:
+    with open('results.json', 'w') as ipsjson:
         ipsjson.write(json.dumps(country_hops, indent=4))
 
 if __name__ == '__main__':
-    ips = get_ips('ips.json')
-    track(ips)
+   ips = get_ips('ips.json')
+   track(ips)
+#    write_ips('GeoIPCountryWhois.csv')
     print 'OK'
