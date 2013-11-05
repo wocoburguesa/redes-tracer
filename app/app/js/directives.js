@@ -133,7 +133,9 @@ angular.module('tracerApp.directives', []).
                     $scope.makeLayers = function () {
                         $scope.layers = {};
                         $scope.layers.osm = new L.TileLayer(
-                            'http://tile.openstreetmap.org/{z}/{x}/{y}.png',
+//                            'http://a.tiles.mapbox.com/v3/wocoburguesa.g6l8dl6h/{z}/{x}/{y}.png',
+//                            'http://a.tiles.mapbox.com/v3/aj.sketchy2/{z}/{x}/{y}.png',
+                            'http://c.tiles.mapbox.com/v3/examples.a3cad6da/{z}/{x}/{y}.png',
                             {
                             }
                         );
