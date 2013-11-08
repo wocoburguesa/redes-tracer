@@ -81,4 +81,80 @@ angular.module('tracerApp.controllers', []).
                     }
                 });
         }
+    ]).
+
+    controller('AllInOneCtrl', [
+        '$scope', '$http',
+        function ($scope, $http) {
+            $scope.centers = {
+                'Brazil': {
+                    lat: -10,
+                    lng: -55,
+                    zoom: 4
+                },
+                'Peru': {
+                    lat: -10,
+                    lng: -76,
+                    zoom: 4
+                },
+                'Colombia': {
+                    lat: 4,
+                    lng: -72,
+                    zoom: 4
+                },
+                'Chile': {
+                    lat: -30,
+                    lng: -71,
+                    zoom: 4
+                },
+                'Argentina': {
+                    lat: -34,
+                    lng: -64,
+                    zoom: 4
+                },
+                'Bolivia': {
+                    lat: -17,
+                    lng: -65,
+                    zoom: 4
+                },
+                'Ecuador': {
+                    lat: -2,
+                    lng: -77.5,
+                    zoom: 4
+                }
+            };
+            $scope.countries = {};
+/*            $scope.center = {
+                lat: 0.0,
+                lng: 0.0,
+                zoom: 2
+            };*/
+
+            $scope.displayedItems = [];
+
+            $scope.$watch('displayedItems', function (newValue, oldValue) {
+                console.log(newValue);
+            });
+
+            $scope.changeCountryColor = function (country, color) {
+                $scope.countries[country].color = color;
+                $scope.$broadcast('changeCountryColor', {country: country, color: color});
+//                $scope.$apply();
+            };
+
+            $scope.displayHops = function (country, ip) {
+                $scope.currentIP = ip;
+                $scope.hops = $scope.hopsData[country][ip];
+            };
+
+            $http.get('hops-data.json').
+                success(function (data) {
+                console.log(data);
+                    $scope.hopsData = data;
+                    for (var country in data) {
+                        $scope.countries[country] = {color: 'red', name: country};
+                        $scope.hops = $scope.hopsData;
+                    }
+                });
+        }
     ]);

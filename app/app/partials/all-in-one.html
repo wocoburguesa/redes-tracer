@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-12 main-container">
+
+    <div class="row">
+
+      <div class="col-md-3">
+
+        <!-- Country -->
+        <div class="selector-section" ng-repeat="country in countries">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default {{ country.color }}">{{ country.name }}</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li class="color-options-container">
+                <a class="color-option red" ng-click="changeCountryColor(country.name, 'red')"></a>
+                <a class="color-option orange" ng-click="changeCountryColor(country.name, 'orange')"></a>
+                <a class="color-option yellow" ng-click="changeCountryColor(country.name, 'yellow')"></a>
+                <a class="color-option green" ng-click="changeCountryColor(country.name, 'green')"></a>
+                <a class="color-option blue" ng-click="changeCountryColor(country.name, 'blue')"></a>
+                <a class="color-option indigo" ng-click="changeCountryColor(country.name, 'indigo')"></a>
+                <a class="color-option violet" ng-click="changeCountryColor(country.name, 'violet')"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-9">
+        <div
+           leaflet-directive-all
+           class="map-container"
+           hops="hops"
+           centers="centers"
+           />
+      </div>
+    </div>
+  </div>
+</div>

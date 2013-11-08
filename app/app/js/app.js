@@ -19,5 +19,9 @@ angular.module('tracerApp', [
             templateUrl: 'partials/home.html',
             controller: 'HomeCtrl'
         });
+        $routeProvider.when('/all-in-one', {
+            templateUrl: 'partials/all-in-one.html',
+            controller: 'AllInOneCtrl'
+        });
         $routeProvider.otherwise({redirectTo: '/home'});
     }]);

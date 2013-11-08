@@ -34,7 +34,7 @@ def track(ips):
     country_hops = dict.fromkeys(latinamerica, {})
 
     #ACA CAMBIAS EL 4 SI ES QUE CORRE MAS RAPIDO EN TU PC
-    for i in range(4):
+    for i in range(10):
         for country in ips.keys():
             ip = ips[country][0]
             sources['LO']['url'] = source_template.replace('_IP_ADDRESS_', ip)
@@ -65,7 +65,7 @@ def track(ips):
         ipsjson.write(json.dumps(country_hops, indent=4))
 
 if __name__ == '__main__':
-   ips = get_ips('ips.json')
-   track(ips)
-#    write_ips('GeoIPCountryWhois.csv')
-   print 'OK'
+    ips = get_ips('ips.json')
+    track(ips)
+    #write_ips('GeoIPCountryWhois.csv')
+    print 'OK'

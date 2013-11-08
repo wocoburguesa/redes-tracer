@@ -1,0 +1,70 @@
+.color-options-container {
+    padding: 0.8em 0.5em 0.5em 1.35em;
+
+    background-color: #e7e7e7;
+
+    border-top: 1px solid #b7b7b7;
+    border-bottom: 1px solid #b7b7b7;
+
+    width: auto;
+}
+
+.color-options-container > .color-option {
+    padding: 0px;
+
+    border-radius: 4px;
+
+    display: inline-block;
+
+    height: 2em;
+    width: 2em;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: none !important;
+}
+
+.red {
+    background-color: red;
+    color: #FECCCC;
+    border-color: #FECCCC;
+}
+
+.blue {
+    background-color: blue;
+    color: #CCCCFF;
+    border-color: #CCCCFF;
+}
+
+.yellow {
+    background-color: yellow;
+    color: #989900;
+    border-color: #989900;
+}
+
+.green {
+    background-color: green;
+    color: #00D100;
+    border-color: #00D100;
+}
+
+.indigo {
+    background-color: indigo;
+    color: #D193FF;
+    border-color: #D193FF;
+}
+
+.orange {
+    background-color: orange;
+    color: #996300;
+    border-color: #996300;
+}
+
+.violet {
+    background-color: violet;
+    color: #AA17AA;
+    border-color: #AA17AA;
+}
